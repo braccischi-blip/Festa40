@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1a0b3d">
 <title>COMPLEANNO.EXE — 40 anni di Alessio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +24,9 @@
     --cream:#f4ecff;
     --ink:#1a0b3d;
   }
-  *{box-sizing:border-box;}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
   body{
     min-height:100vh;
     background:
@@ -137,9 +139,9 @@
     justify-content:space-between;
     letter-spacing:.5px;
   }
-  .titlebar .tb-left{display:flex;align-items:center;gap:8px;}
-  .tb-icon{width:14px;height:14px;background:var(--yellow-neon);border:1px solid #000;display:inline-block;}
-  .tb-btns{display:flex;gap:4px;}
+  .titlebar .tb-left{display:flex;align-items:center;gap:8px;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+  .tb-icon{width:14px;height:14px;flex:0 0 auto;background:var(--yellow-neon);border:1px solid #000;display:inline-block;}
+  .tb-btns{display:flex;gap:4px;flex:0 0 auto;}
   .tb-btns span{
     width:16px;height:14px;background:var(--win-grey);border:1px solid #000;
     box-shadow:inset -1px -1px 0 #4d4d4d, inset 1px 1px 0 #fff;
@@ -192,22 +194,24 @@
 
   /* STORIA / CHANGELOG WINDOW */
   .log-line{
-    display:flex; gap:12px; font-size:21px; padding:8px 4px; border-bottom:1px dashed #b8a9d9;
+    font-size:20px; padding:10px 4px; border-bottom:1px dashed #b8a9d9; line-height:1.5;
   }
   .log-line:last-child{border-bottom:none;}
   .log-tag{
     font-family:'Press Start 2P', monospace; font-size:10px; color:#fff;
-    background:var(--purple-mid); padding:4px 8px; height:fit-content; white-space:nowrap;
+    background:var(--purple-mid); padding:4px 8px; white-space:nowrap;
+    display:inline-block; vertical-align:middle; margin-right:8px;
   }
-  .log-line .icon{font-size:24px;}
+  .log-line .icon{font-size:22px; display:inline-block; vertical-align:middle; margin-right:6px;}
 
   /* DETTAGLI */
-  .details-grid{display:grid;grid-template-columns:1fr;gap:14px;}
-  .detail-row{display:flex;gap:14px;align-items:flex-start;font-size:23px;}
+  .details-grid{display:grid;grid-template-columns:1fr;gap:18px;}
+  .detail-row{font-size:22px;}
   .detail-row .k{
     font-family:'Press Start 2P', monospace;font-size:11px;color:var(--purple-mid);
-    min-width:120px;padding-top:4px;
+    display:block; margin-bottom:6px;
   }
+  .detail-row .v{display:block;}
   .detail-row .v strong{color:var(--pink-neon);-webkit-text-stroke:.5px #000;}
   .dress{
     margin-top:18px;padding:14px;background:#fff2fb;border:2px dashed var(--pink-neon);font-size:20px;
@@ -223,6 +227,7 @@
     color:#000;
     background:var(--yellow-neon);
     padding:18px 30px;
+    min-width:220px;
     text-decoration:none;
     border:3px solid #000;
     box-shadow:6px 6px 0 #000;
@@ -283,15 +288,20 @@
   }
 
   @media (max-width:560px){
-    .detail-row{flex-direction:column;gap:4px;}
     .years-row{flex-wrap:wrap;}
-    .taskbar{font-size:9px;}
+    .taskbar{font-size:9px;padding:0 6px;}
+    .task-chip{padding:6px 8px;}
+    .start-btn{padding:6px 8px;}
+    .titlebar{font-size:9px;padding:6px;}
     .hero h2{font-size:12px;}
     .hero p{font-size:20px;}
-    .detail-row .v{font-size:21px;}
-    .log-line{font-size:19px;}
+    .detail-row{font-size:20px;}
+    .log-line{font-size:18px;}
     .dress, .look-quote{font-size:18px;}
     .look-card ul{font-size:18px;}
+  }
+  @media (max-width:360px){
+    .task-chip span, .task-chip{font-size:8px;}
   }
 </style>
 </head>
