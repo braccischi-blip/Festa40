@@ -3,673 +3,152 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#1a0b3d">
-<title>COMPLEANNO.EXE — 40 anni di Alessio</title>
+<meta name="robots" content="noindex,nofollow">
+<title>40 anni di Alessio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --purple-deep:#1a0b3d;
-    --purple-mid:#3a1266;
-    --pink-neon:#ff2ec4;
-    --cyan-neon:#25f4ee;
-    --yellow-neon:#fff62e;
-    --green-neon:#39ff88;
-    --win-grey:#c3c3c3;
-    --win-grey-lt:#e8e8e8;
-    --win-grey-dk:#7a7a7a;
-    --win-blue:#000080;
-    --win-blue-lt:#1084d0;
-    --cream:#f4ecff;
-    --ink:#1a0b3d;
+    --bg-deep:#08080c;
+    --bg-panel:#111116;
+    --border:#232329;
+    --violet:#7c5cff;
+    --cyan:#4dd8e6;
+    --text:#f2f2f5;
+    --text-muted:#8a8a97;
   }
-  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
-  html{-webkit-text-size-adjust:100%;}
   body{
     min-height:100vh;
-    background:
-      radial-gradient(circle at 15% 20%, rgba(255,46,196,.35), transparent 45%),
-      radial-gradient(circle at 85% 15%, rgba(37,244,238,.30), transparent 45%),
-      radial-gradient(circle at 50% 90%, rgba(57,255,136,.20), transparent 50%),
-      repeating-linear-gradient(45deg, #241050 0 2px, #1a0b3d 2px 40px),
-      var(--purple-deep);
-    font-family:'VT323', monospace;
-    color:var(--ink);
-    overflow-x:hidden;
-    padding-bottom:70px;
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+    background:var(--bg-deep);
+    font-family:'Space Grotesk', sans-serif;
+    color:var(--text);
     position:relative;
-  }
-
-  /* CRT scanline overlay */
-  body::before{
-    content:"";
-    position:fixed; inset:0;
-    background:repeating-linear-gradient(
-      to bottom,
-      rgba(0,0,0,0) 0px,
-      rgba(0,0,0,0) 2px,
-      rgba(0,0,0,.12) 3px
-    );
-    pointer-events:none;
-    z-index:9998;
-    mix-blend-mode:multiply;
-  }
-  body::after{
-    content:"";
-    position:fixed; inset:0;
-    box-shadow:inset 0 0 180px rgba(0,0,0,.65);
-    pointer-events:none;
-    z-index:9997;
-  }
-
-  /* ===== BOOT SCREEN ===== */
-  #boot{
-    position:fixed; inset:0;
-    background:#000;
-    color:#39ff88;
-    font-family:'VT323', monospace;
-    font-size:22px;
-    padding:32px;
-    z-index:10000;
-    white-space:pre-wrap;
-    line-height:1.5;
-    cursor:pointer;
-  }
-  #boot .cursor{display:inline-block;width:11px;height:20px;background:#39ff88;vertical-align:middle;animation:blink 1s steps(1) infinite;}
-  @keyframes blink{50%{opacity:0;}}
-  #boot .hint{position:absolute;bottom:24px;left:32px;font-size:16px;color:#2ea862;opacity:.8;}
-  @media (max-width:520px){
-    #boot{font-size:15px;padding:20px 16px;line-height:1.55;}
-    #boot .hint{bottom:14px;left:16px;font-size:12px;}
-  }
-
-  /* ===== MARQUEE ===== */
-  .marquee-bar{
-    background:repeating-linear-gradient(45deg, var(--yellow-neon) 0 20px, #111 20px 40px);
-    padding:6px 0;
     overflow:hidden;
-    border-bottom:3px solid #000;
-    position:relative;
-    z-index:2;
-  }
-  .marquee-track{
-    display:inline-block;
-    white-space:nowrap;
-    padding-left:100%;
-    animation:scrollmarquee 22s linear infinite;
-    font-family:'Press Start 2P', monospace;
-    font-size:12px;
-    color:#000;
-    background:var(--cream);
-    padding:4px 24px;
-  }
-  @keyframes scrollmarquee{
-    0%{transform:translateX(0);}
-    100%{transform:translateX(-100%);}
   }
 
-  main{max-width:900px;margin:0 auto;padding:28px 16px 10px;position:relative;z-index:2;}
+  /* glow ambientali morbidi, per un effetto "tech" contemporaneo */
+  .glow{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.35;}
+  .glow.a{width:420px;height:420px;background:var(--violet);top:-140px;left:-120px;}
+  .glow.b{width:380px;height:380px;background:var(--cyan);bottom:-160px;right:-100px;}
 
-  /* ===== LEVEL MAP (Mario style) ===== */
-  .level-map{
-    position:sticky; top:0; z-index:50;
-    background:var(--purple-mid);
-    border-bottom:3px solid #000;
-    padding:10px 14px;
-    display:flex; align-items:center; justify-content:center; gap:14px;
-    flex-wrap:wrap;
-  }
-  .lm-inner{display:flex;align-items:center;gap:6px;}
-  .lm-node{
-    font-family:'Press Start 2P', monospace; font-size:14px;
-    background:var(--win-grey-dk); color:#fff;
-    border:2px solid #000; width:34px; height:34px;
-    display:flex; align-items:center; justify-content:center;
-    cursor:pointer; opacity:.55; transition:transform .15s ease, opacity .15s ease;
-    position:relative;
-  }
-  .lm-node + .lm-node{margin-left:2px;}
-  .lm-node::after{
-    content:""; position:absolute; left:-8px; top:50%; width:8px; height:2px;
-    background:repeating-linear-gradient(to right, #fff 0 3px, transparent 3px 6px);
-  }
-  .lm-node:first-child::after{display:none;}
-  .lm-node.done{background:var(--green-neon); color:#000; opacity:1;}
-  .lm-node.current{
-    background:var(--yellow-neon); color:#000; opacity:1;
-    transform:scale(1.18);
-    box-shadow:0 0 0 2px #000, 0 0 12px var(--yellow-neon);
-    animation:bounce .6s ease infinite alternate;
-  }
-  @keyframes bounce{from{transform:scale(1.18) translateY(0);}to{transform:scale(1.18) translateY(-4px);}}
-  .lm-node.final{background:var(--pink-neon);}
-  .lm-node.final.current{background:var(--yellow-neon);}
-  .lm-score{
-    font-family:'Press Start 2P', monospace; font-size:13px; color:var(--yellow-neon);
-    background:#000; border:2px solid #000; padding:8px 10px; white-space:nowrap;
-  }
-
-  /* ===== WIZARD NAV BUTTONS ===== */
-  .wizard-nav{
-    display:flex; align-items:center; justify-content:space-between; gap:10px;
-    margin-top:26px; padding-top:18px; border-top:2px dashed #9a8ec2;
-  }
-  .nav-btn{
-    font-family:'Press Start 2P', monospace; font-size:12px;
-    padding:14px 16px; border:3px solid #000; cursor:pointer;
-    background:var(--win-grey-lt);
-    box-shadow:4px 4px 0 #000;
-    transition:transform .08s ease, box-shadow .08s ease;
-    display:inline-flex; align-items:center; justify-content:center;
-    line-height:1;
-  }
-  .nav-btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 #000;}
-  .nav-btn:active{transform:translate(4px,4px);box-shadow:0 0 0 #000;}
-  .nav-btn.next{background:var(--cyan-neon);margin-left:auto;}
-  .nav-btn.prev{background:var(--win-grey-lt);}
-
-  /* ===== WINDOW 95 CHROME ===== */
-  .window{
-    background:var(--win-grey);
-    border:2px solid #000;
-    box-shadow:
-      inset -2px -2px 0 #4d4d4d,
-      inset 2px 2px 0 #fff,
-      6px 6px 0 rgba(0,0,0,.5);
-    margin-bottom:34px;
-    animation:popin .4s ease-out backwards;
-  }
-  @keyframes popin{from{opacity:0;transform:translateY(14px) scale(.98);}to{opacity:1;transform:none;}}
-  .window:nth-of-type(2){animation-delay:.1s;}
-  .window:nth-of-type(3){animation-delay:.2s;}
-  .window:nth-of-type(4){animation-delay:.3s;}
-
-  .titlebar{
-    background:linear-gradient(90deg, var(--win-blue) 0%, var(--win-blue-lt) 100%);
-    color:#fff;
-    font-family:'Press Start 2P', monospace;
-    font-size:11px;
-    padding:6px 8px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    letter-spacing:.5px;
-  }
-  .titlebar .tb-left{display:flex;align-items:center;gap:8px;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
-  .tb-icon{width:14px;height:14px;flex:0 0 auto;background:var(--yellow-neon);border:1px solid #000;display:inline-block;}
-  .tb-btns{display:flex;gap:4px;flex:0 0 auto;}
-  .tb-btns span{
-    width:16px;height:14px;background:var(--win-grey);border:1px solid #000;
-    box-shadow:inset -1px -1px 0 #4d4d4d, inset 1px 1px 0 #fff;
-    color:#000; font-family:monospace; font-size:10px; text-align:center; line-height:14px;
-  }
-
-  .win-body{padding:22px 24px;background:var(--win-grey);}
-  .win-body.paper{background:var(--cream);margin:12px;border:1px solid #999;box-shadow:inset 0 0 0 1px #fff;}
-
-  /* HERO */
-  .hero .win-body{
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,0) 40%),
-      var(--win-grey);
+  .panel{
+    position:relative;z-index:1;
+    width:100%;max-width:440px;
+    background:rgba(17,17,22,.85);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:44px 36px 36px;
     text-align:center;
-    padding:36px 20px 30px;
+    backdrop-filter:blur(20px);
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
   }
+
   .badge{
-    display:inline-block;
-    font-family:'Press Start 2P', monospace;
-    font-size:11px;
-    background:var(--ink);
-    color:var(--cyan-neon);
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:'IBM Plex Mono', monospace;font-size:12px;
+    color:var(--cyan);
+    background:rgba(77,216,230,.08);
+    border:1px solid rgba(77,216,230,.25);
+    border-radius:100px;
     padding:6px 14px;
-    border:2px solid #000;
-    margin-bottom:18px;
+    margin-bottom:22px;
+    letter-spacing:.02em;
   }
-  .hero h1{
-    font-family:'Press Start 2P', monospace;
-    font-size:clamp(38px, 10vw, 78px);
-    margin:0;
-    color:var(--pink-neon);
-    -webkit-text-stroke:2px #000;
-    text-shadow:5px 5px 0 var(--cyan-neon), 8px 8px 0 #000;
-    line-height:1;
-  }
-  .hero h2{
-    font-family:'Press Start 2P', monospace;
-    font-size:clamp(13px, 3vw, 20px);
-    margin:18px 0 6px;
-    color:var(--ink);
-  }
-  .hero p{font-size:22px;max-width:560px;margin:14px auto 0;line-height:1.4;}
-  .years-row{
-    display:flex;align-items:center;justify-content:center;gap:16px;
-    margin-top:26px;font-family:'Press Start 2P', monospace;font-size:14px;
-  }
-  .years-row .y{background:#000;color:var(--green-neon);padding:8px 12px;border:2px solid var(--green-neon);}
-  .years-row .arrow{color:var(--yellow-neon);font-size:20px;}
+  .badge .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);}
 
-  /* STORIA / CHANGELOG WINDOW */
-  .log-line{
-    font-size:20px; padding:10px 4px; border-bottom:1px dashed #b8a9d9; line-height:1.5;
+  h1{
+    font-size:clamp(26px, 6vw, 32px);
+    font-weight:700;
+    margin:0 0 12px;
+    line-height:1.25;
+    letter-spacing:-.01em;
   }
-  .log-line:last-child{border-bottom:none;}
-  .log-tag{
-    font-family:'Press Start 2P', monospace; font-size:10px; color:#fff;
-    background:var(--purple-mid); padding:4px 8px; white-space:nowrap;
-    display:inline-block; vertical-align:middle; margin-right:8px;
-  }
-  .log-line .icon{font-size:22px; display:inline-block; vertical-align:middle; margin-right:6px;}
-
-  /* DETTAGLI */
-  .details-grid{display:grid;grid-template-columns:1fr;gap:18px;}
-  .detail-row{font-size:22px;}
-  .detail-row .k{
-    font-family:'Press Start 2P', monospace;font-size:11px;color:var(--purple-mid);
-    display:block; margin-bottom:6px;
-  }
-  .detail-row .v{display:block;}
-  .detail-row .v strong{color:var(--pink-neon);-webkit-text-stroke:.5px #000;}
-  .dress{
-    margin-top:18px;padding:14px;background:#fff2fb;border:2px dashed var(--pink-neon);font-size:20px;
+  h1 span{
+    background:linear-gradient(90deg, var(--violet), var(--cyan));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
   }
 
-  /* RSVP */
-  .rsvp .win-body{text-align:center;padding:34px 20px;}
-  .rsvp .badge{background:#000;color:var(--yellow-neon);border-color:var(--yellow-neon);}
-  .rsvp p.lead{font-size:24px;margin-bottom:22px;}
-  .cta-btn{
-    display:inline-block;
-    font-family:'Press Start 2P', monospace;
-    font-size:16px;
-    color:#000;
-    background:var(--yellow-neon);
-    padding:18px 30px;
-    min-width:220px;
+  p.intro{
+    font-size:16px;color:var(--text-muted);
+    margin:0 0 32px;line-height:1.6;
+  }
+
+  .choices{display:flex;flex-direction:column;gap:12px;}
+  .choice{
+    display:flex;align-items:center;gap:14px;
+    text-align:left;
     text-decoration:none;
-    border:3px solid #000;
-    box-shadow:6px 6px 0 #000;
-    transition:transform .08s ease, box-shadow .08s ease;
+    color:var(--text);
+    background:rgba(255,255,255,.02);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:16px 18px;
+    transition:border-color .2s ease, background .2s ease, transform .15s ease;
   }
-  .cta-btn:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 #000;background:var(--green-neon);}
-  .cta-btn:active{transform:translate(6px,6px);box-shadow:0 0 0 #000;}
-  .rsvp .fine{margin-top:16px;font-size:17px;color:#4a2f7a;}
+  .choice:hover{
+    border-color:var(--violet);
+    background:rgba(124,92,255,.07);
+    transform:translateY(-2px);
+  }
+  .choice-icon{
+    flex:0 0 auto;
+    width:38px;height:38px;
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(124,92,255,.12);
+    color:var(--violet);
+  }
+  .choice.cyan .choice-icon{background:rgba(77,216,230,.12);color:var(--cyan);}
+  .choice-text{flex:1;}
+  .choice-title{font-size:15px;font-weight:600;margin:0 0 2px;}
+  .choice-sub{font-size:13px;color:var(--text-muted);margin:0;}
+  .choice-arrow{flex:0 0 auto;color:var(--text-muted);font-size:18px;transition:transform .2s ease, color .2s ease;}
+  .choice:hover .choice-arrow{transform:translateX(3px);color:var(--text);}
 
-  footer{
-    text-align:center;color:var(--cream);opacity:.7;font-size:16px;padding:18px 10px 90px;position:relative;z-index:2;
-  }
-
-  /* TASKBAR */
-  .taskbar{
-    position:fixed;bottom:0;left:0;right:0;height:46px;
-    background:var(--win-grey);
-    border-top:2px solid #fff;
-    box-shadow:inset 0 2px 0 #fff;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:0 8px;z-index:9999;
-    font-family:'Press Start 2P', monospace;font-size:11px;
-  }
-  .start-btn{
-    background:var(--win-grey);border:2px solid #000;
-    box-shadow:inset -1px -1px 0 #4d4d4d, inset 1px 1px 0 #fff;
-    padding:6px 12px;display:flex;align-items:center;gap:6px;color:#000;
-  }
-  .task-chip{
-    background:var(--win-grey-lt);border:1px solid #000;
-    box-shadow:inset -1px -1px 0 #4d4d4d, inset 1px 1px 0 #fff;
-    padding:6px 10px;display:flex;align-items:center;gap:6px;color:#000;
-  }
-  .taskbar-right{
-    background:var(--win-grey-lt);border:1px solid #7a7a7a;
-    box-shadow:inset 1px 1px 0 #4d4d4d;
-    padding:6px 10px;color:#000;
-  }
-
-  /* LOOK.EXE — outfit wizard */
-  .look-intro{font-size:22px;margin:0 0 18px;}
-  .look-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  .look-card{background:var(--cream);border:2px solid #000;box-shadow:inset -2px -2px 0 rgba(0,0,0,.12), 4px 4px 0 rgba(0,0,0,.35);padding:14px 14px 16px;}
-  .look-card h3{
-    font-family:'Press Start 2P', monospace;font-size:12px;margin:0 0 12px;
-    color:#fff;background:var(--purple-mid);padding:8px 10px;margin:-14px -14px 12px;
-  }
-  .look-card ul{margin:0;padding-left:22px;font-size:19px;line-height:1.45;}
-  .look-card li{margin-bottom:8px;}
-  .look-quote{
-    margin-top:20px;padding:14px 16px;background:#000;color:var(--yellow-neon);
-    border:2px dashed var(--yellow-neon);font-size:20px;text-align:center;
-  }
-  .look-quote b{color:var(--pink-neon);}
-
-  @media (max-width:720px){
-    .look-grid{grid-template-columns:1fr;}
-  }
-
-  @media (max-width:560px){
-    .years-row{flex-wrap:wrap;}
-    .taskbar{font-size:9px;padding:0 6px;}
-    .task-chip{padding:6px 8px;}
-    .start-btn{padding:6px 8px;}
-    .titlebar{font-size:9px;padding:6px;}
-    .hero h2{font-size:12px;}
-    .hero p{font-size:20px;}
-    .detail-row{font-size:20px;}
-    .log-line{font-size:18px;}
-    .dress, .look-quote{font-size:18px;}
-    .look-card ul{font-size:18px;}
-  }
-  @media (max-width:360px){
-    .task-chip span, .task-chip{font-size:8px;}
-  }
-
-  /* Wizard mode: attivata via JS. Senza JS tutte le schermate restano visibili (fallback) */
-  main.wizard-mode .window[data-step]{display:none;}
-  main.wizard-mode .window[data-step].active{display:block;}
-  @media (max-width:480px){
-    .lm-node{width:28px;height:28px;font-size:11px;}
-    .lm-score{font-size:11px;padding:6px 8px;}
-    .level-map{gap:8px;padding:8px 10px;}
-    .nav-btn{font-size:10px;padding:10px 12px;}
+  @media (max-width:400px){
+    .panel{padding:34px 22px 28px;border-radius:16px;}
   }
 </style>
 </head>
 <body>
 
-<div id="boot"><span id="boot-text"></span><span class="cursor"></span>
-  <div class="hint">clicca o premi un tasto per continuare</div>
-</div>
+  <div class="glow a"></div>
+  <div class="glow b"></div>
 
-<div class="marquee-bar">
-  <div class="marquee-track">★ 40 ANNI, NON BYTE ★ NATO NEL 1986, IN LOOP DAL 1996 ★ CARICAMENTO FESTA IN CORSO... ★ NON CHIUDERE QUESTA FINESTRA ★ CTRL+ALT+FESTEGGIA ★</div>
-</div>
+  <div class="panel">
+    <span class="badge"><span class="dot"></span>INVITO DIGITALE</span>
+    <h1>40 anni di <span>Alessio</span></h1>
+    <p class="intro">Sei stato invitato. Scegli come vuoi aprire l'invito.</p>
 
-<div class="level-map" id="levelMap">
-  <div class="lm-inner">
-    <button class="lm-node" type="button" data-goto="1" aria-label="Quadro 1-1">🕹️</button>
-    <button class="lm-node" type="button" data-goto="2" aria-label="Quadro 1-2">📼</button>
-    <button class="lm-node" type="button" data-goto="3" aria-label="Quadro 1-3">🗺️</button>
-    <button class="lm-node" type="button" data-goto="4" aria-label="Quadro 1-4">👕</button>
-    <button class="lm-node final" type="button" data-goto="5" aria-label="Quadro finale">🏰</button>
+    <div class="choices">
+      <a class="choice" href="festa-anni90.html">
+        <span class="choice-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="3"></rect><line x1="7" y1="10" x2="7" y2="14"></line><line x1="5" y1="12" x2="9" y2="12"></line><circle cx="16" cy="10" r="1"></circle><circle cx="18.5" cy="12.5" r="1"></circle></svg>
+        </span>
+        <span class="choice-text">
+          <p class="choice-title">Versione interattiva</p>
+          <p class="choice-sub">L'esperienza completa, passo per passo</p>
+        </span>
+        <span class="choice-arrow">→</span>
+      </a>
+
+      <a class="choice cyan" href="invito-elegante.html">
+        <span class="choice-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L14.5 8.5 L21 9.5 L16.5 14 L17.8 20.5 L12 17.3 L6.2 20.5 L7.5 14 L3 9.5 L9.5 8.5 Z"></path></svg>
+        </span>
+        <span class="choice-text">
+          <p class="choice-title">Versione essenziale</p>
+          <p class="choice-sub">Il biglietto, in breve</p>
+        </span>
+        <span class="choice-arrow">→</span>
+      </a>
+    </div>
   </div>
-  <div class="lm-score">🪙 <span id="coinCount">000000</span></div>
-</div>
-
-<main>
-
-  <section class="window hero" data-step="1">
-    <div class="titlebar">
-      <div class="tb-left"><span class="tb-icon"></span> COMPLEANNO.EXE — in esecuzione</div>
-      <div class="tb-btns"><span>_</span><span>□</span><span>X</span></div>
-    </div>
-    <div class="win-body">
-      <span class="badge">SYSTEM ALERT: LIVELLO 40 SBLOCCATO</span>
-      <h1>40!</h1>
-      <h2>Alessio compie gli anni</h2>
-      <p>Nato nel 1986, cresciuto tra floppy disk, dial-up e vite infinite (cheat code su). Oggi si affronta il boss finale del decennio: i 40 anni. Vestitevi anni '90 e venite a festeggiare.</p>
-      <div class="years-row">
-        <span class="y">1986</span><span class="arrow">▶▶▶</span><span class="y">2026</span>
-      </div>
-      <div class="wizard-nav">
-        <span></span>
-        <button class="nav-btn next" type="button" data-next>AVANTI ▶</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="window" data-step="2">
-    <div class="titlebar">
-      <div class="tb-left"><span class="tb-icon"></span> LA_STORIA.LOG — Blocco note</div>
-      <div class="tb-btns"><span>_</span><span>□</span><span>X</span></div>
-    </div>
-    <div class="win-body">
-      <div class="win-body paper" style="padding:18px;">
-        <div class="log-line"><span class="icon">🎮</span><span class="log-tag">v0.1</span><span>1986 — Boot iniziale. Nasce Alessio.</span></div>
-        <div class="log-line"><span class="icon">🕹️</span><span class="log-tag">v4.1</span><span>1990 — Prime run su Game Boy. Salvataggi persi per sempre (niente cloud save).</span></div>
-        <div class="log-line"><span class="icon">🏟️</span><span class="log-tag">v4.2</span><span>1990 — I Mondiali di calcio si giocano in Italia: "Notti Magiche".</span></div>
-        <div class="log-line"><span class="icon">🐢</span><span class="log-tag">v5.0</span><span>1991 — Debutta "Non è la Rai", esplode la febbre delle Tartarughe Ninja, VHS.</span></div>
-        <div class="log-line"><span class="icon">👽</span><span class="log-tag">v6.0</span><span>1992 — Esce Alien³ al cinema: il terrore torna nello spazio profondo.</span></div>
-        <div class="log-line"><span class="icon">☎️</span><span class="log-tag">v7.1</span><span>1993 — Primi contatti col modem: connessione in corso, non alzate la cornetta.</span></div>
-        <div class="log-line"><span class="icon">⚽</span><span class="log-tag">v7.2</span><span>1993 — Il 28 marzo debutta Francesco Totti.</span></div>
-        <div class="log-line"><span class="icon">👾</span><span class="log-tag">v8.1</span><span>1994 — Livello Street Fighter raggiunto nelle sale giochi. Combo imparate a memoria.</span></div>
-        <div class="log-line"><span class="icon">📦</span><span class="log-tag">v8.2</span><span>1994 — Nasce Amazon: si vendono ancora solo libri online.</span></div>
-        <div class="log-line"><span class="icon">🕹️</span><span class="log-tag">v9.1</span><span>1995 — Arriva la PlayStation in Italia, con Tekken e ISS Pro a conquistare il salotto.</span></div>
-        <div class="log-line"><span class="icon">💾</span><span class="log-tag">v9.2</span><span>1995 — Aggiornamento a Windows 95: doppio click su tutto, anche sulla realtà.</span></div>
-        <div class="log-line"><span class="icon">🛒</span><span class="log-tag">v9.3</span><span>1995 — Nasce eBay: il primo oggetto venduto è un puntatore laser rotto.</span></div>
-        <div class="log-line"><span class="icon">🎸</span><span class="log-tag">v10.1</span><span>1996 — "Gli anni" degli 883 diventa l'inno della generazione.</span></div>
-        <div class="log-line"><span class="icon">📱</span><span class="log-tag">v10.2</span><span>1996 — Primi cellulari "mattonella" iniziano a girare tra gli adulti.</span></div>
-        <div class="log-line"><span class="icon">🐑</span><span class="log-tag">v10.3</span><span>1996 — Pecora Dolly, primo mammifero clonato al mondo.</span></div>
-        <div class="log-line"><span class="icon">🏺</span><span class="log-tag">v10.4</span><span>1996 — Esce Tomb Raider, nasce Lara Croft.</span></div>
-        <div class="log-line"><span class="icon">🐙</span><span class="log-tag">v11.1</span><span>1997 — Adottato un Tamagotchi che va nutrito ogni due ore.</span></div>
-        <div class="log-line"><span class="icon">🚢</span><span class="log-tag">v11.2</span><span>1997 — Esce Titanic al cinema, tormentone planetario.</span></div>
-        <div class="log-line"><span class="icon">📺</span><span class="log-tag">v12.1</span><span>1998 — Maratone di Beverly Hills 90210 e Buffy l'ammazzavampiri.</span></div>
-        <div class="log-line"><span class="icon">💿</span><span class="log-tag">v12.2</span><span>1998 — Un CD masterizzato sempre nello stereo.</span></div>
-        <div class="log-line"><span class="icon">🔍</span><span class="log-tag">v12.3</span><span>1998 — Nasce Google, in un garage di Menlo Park.</span></div>
-        <div class="log-line"><span class="icon">🕶️</span><span class="log-tag">v13.1</span><span>1999 — Esce The Matrix: tutti provano a schivare i proiettili come Neo.</span></div>
-        <div class="log-line"><span class="icon">🎧</span><span class="log-tag">v13.2</span><span>1999 — Napster sconvolge il mondo della musica.</span></div>
-        <div class="log-line"><span class="icon">🏆</span><span class="log-tag">v40.0</span><span>2026 — Release stabile. Nessun crash in 40 anni. Aggiornamento "party" disponibile ora.</span></div>
-      </div>
-      <div class="wizard-nav">
-        <button class="nav-btn prev" type="button" data-prev>◀ INDIETRO</button>
-        <button class="nav-btn next" type="button" data-next>AVANTI ▶</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="window" data-step="3">
-    <div class="titlebar">
-      <div class="tb-left"><span class="tb-icon"></span> DETTAGLI_EVENTO.DOC</div>
-      <div class="tb-btns"><span>_</span><span>□</span><span>X</span></div>
-    </div>
-    <div class="win-body">
-      <div class="details-grid">
-        <div class="detail-row"><span class="k">📅 QUANDO</span><span class="v"><strong>4 Settembre</strong>, dalle 20:00 alle 00:00</span></div>
-        <div class="detail-row"><span class="k">📍 DOVE</span><span class="v"><strong>Hotel Tiber</strong>, ultimo piano — Via della Torre Clementina 276, Fiumicino</span></div>
-        <div class="detail-row"><span class="k">🕹️ TEMA</span><span class="v"><strong>Anni 90</strong>, revival totale</span></div>
-        <div class="detail-row"><span class="k">🎟️ RSVP ENTRO</span><span class="v"><strong>23/08/2026</strong></span></div>
-      </div>
-      <div class="wizard-nav">
-        <button class="nav-btn prev" type="button" data-prev>◀ INDIETRO</button>
-        <button class="nav-btn next" type="button" data-next>AVANTI ▶</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="window" data-step="4">
-    <div class="titlebar">
-      <div class="tb-left"><span class="tb-icon"></span> LOOK.EXE — Setup guidato outfit</div>
-      <div class="tb-btns"><span>_</span><span>□</span><span>X</span></div>
-    </div>
-    <div class="win-body">
-      <p class="look-intro">💽 Installazione guidata del tuo outfit anni '90. Segui i passaggi, nessun tag "vintage" verrà installato per errore.</p>
-      <div class="look-grid">
-        <div class="look-card">
-          <h3>UNISEX</h3>
-          <ul>
-            <li>Salopette</li>
-            <li>Jeans chiari, anche strappati — solo a vita alta e mai stretti (mutande a vista: off limits!!)</li>
-            <li>T-shirt e tute acetate fluo</li>
-          </ul>
-        </div>
-        <div class="look-card">
-          <h3>LUI</h3>
-          <ul>
-            <li>Gel per capelli con ciuffo scolpito, oppure bandana</li>
-            <li>Camicia a quadrettoni, anche aperta sopra una t-shirt</li>
-            <li>Per le scarpe una scelta sola: sneakers</li>
-          </ul>
-        </div>
-        <div class="look-card">
-          <h3>LEI</h3>
-          <ul>
-            <li>Frangia e capelli gonfi di lacca (NO tagli veri!!)</li>
-            <li>Camicia annodata in vita, mini dress o crop top fluo, anche con giacca di jeans corta</li>
-            <li>Sneakers, sandali con la zeppa e orecchini grandi</li>
-          </ul>
-        </div>
-      </div>
-      <div class="look-quote">Se il mood non è chiaro: rivedetevi <b>Beverly Hills 90210</b> e prendete appunti.</div>
-      <div class="wizard-nav">
-        <button class="nav-btn prev" type="button" data-prev>◀ INDIETRO</button>
-        <button class="nav-btn next" type="button" data-next>AVANTI ▶</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="window rsvp" data-step="5">
-    <div class="titlebar">
-      <div class="tb-left"><span class="tb-icon"></span> RSVP.EXE</div>
-      <div class="tb-btns"><span>_</span><span>□</span><span>X</span></div>
-    </div>
-    <div class="win-body">
-      <p class="lead">Missione finale: conferma la tua presenza prima che scada il timer.</p>
-      <a class="cta-btn" href="https://forms.gle/SOSTITUISCI_CON_IL_TUO_LINK" target="_blank" rel="noopener">▶ CONFERMA PRESENZA</a>
-      <p class="fine">Clicca per aprire il modulo Google e sbloccare il tuo posto alla festa.</p>
-      <div class="wizard-nav">
-        <button class="nav-btn prev" type="button" data-prev>◀ RIVEDI I DETTAGLI</button>
-        <span></span>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>© 1986–2026 Alessio SYSTEMS · tutti i diritti riservati alla nostalgia</footer>
-
-<div class="taskbar">
-  <div class="start-btn">🖥️ START</div>
-  <div class="task-chip">🎉 FESTA40.EXE</div>
-  <div class="taskbar-right" id="clock">00:00</div>
-</div>
-
-<script>
-  // Orologio taskbar stile Windows 95
-  function tick(){
-    var d = new Date();
-    var hh = String(d.getHours()).padStart(2,'0');
-    var mm = String(d.getMinutes()).padStart(2,'0');
-    document.getElementById('clock').textContent = hh+':'+mm;
-  }
-  tick(); setInterval(tick, 1000);
-
-  // Boot sequence
-  var lines = [
-    "PARTY-OS v40.0  (c) 1986-2026",
-    "",
-    "Avvio in corso...",
-    "Caricamento nostalgia........... [OK]",
-    "Inizializzazione joystick....... [OK]",
-    "Verifica floppy disk............ [OK]",
-    "Connessione modem 56k...........",
-    "  kssshhh-ereeeeee-dunk-dunk-pshhhh",
-    "Connessione riuscita! Benvenuto.",
-    "",
-    "Caricamento invito di compleanno..."
-  ];
-  var boot = document.getElementById('boot');
-  var target = document.getElementById('boot-text');
-  var i = 0, char = 0, done = false;
-
-  function typeNext(){
-    if(done) return;
-    if(i >= lines.length){
-      finishBoot();
-      return;
-    }
-    var line = lines[i];
-    if(char <= line.length){
-      var current = target.textContent.split("\n");
-      current[i] = line.slice(0, char);
-      target.textContent = current.join("\n");
-      char++;
-      setTimeout(typeNext, 14);
-    } else {
-      target.textContent += "\n";
-      i++; char = 0;
-      setTimeout(typeNext, 120);
-    }
-  }
-  typeNext();
-
-  function finishBoot(){
-    if(done) return;
-    done = true;
-    setTimeout(function(){
-      boot.style.transition = "opacity .5s ease";
-      boot.style.opacity = "0";
-      setTimeout(function(){ boot.style.display = "none"; }, 500);
-    }, 900);
-  }
-
-  boot.addEventListener('click', finishBoot);
-  window.addEventListener('keydown', finishBoot);
-  setTimeout(finishBoot, 7000);
-
-  // Rispetta reduced motion
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    document.querySelectorAll('.window').forEach(function(w){ w.style.animation = 'none'; });
-  }
-
-  // ===== WIZARD / LEVEL MAP =====
-  (function(){
-    var mainEl = document.querySelector('main');
-    var steps = Array.prototype.slice.call(document.querySelectorAll('.window[data-step]'));
-    if(!steps.length) return;
-
-    var totalSteps = steps.length;
-    var nodes = Array.prototype.slice.call(document.querySelectorAll('.lm-node'));
-    var coinEl = document.getElementById('coinCount');
-    var levelMap = document.getElementById('levelMap');
-    var current = 1;
-    var maxReached = 1;
-
-    mainEl.classList.add('wizard-mode');
-
-    function pad(n){ return String(n).padStart(6,'0'); }
-
-    function render(){
-      steps.forEach(function(s){
-        var step = parseInt(s.getAttribute('data-step'), 10);
-        s.classList.toggle('active', step === current);
-      });
-      nodes.forEach(function(n){
-        var step = parseInt(n.getAttribute('data-goto'), 10);
-        n.classList.toggle('current', step === current);
-        n.classList.toggle('done', step < current);
-      });
-      if(coinEl){ coinEl.textContent = pad((maxReached - 1) * 100); }
-    }
-
-    function goTo(step){
-      if(step < 1) step = 1;
-      if(step > totalSteps) step = totalSteps;
-      current = step;
-      if(current > maxReached) maxReached = current;
-      render();
-      if(levelMap){
-        var top = levelMap.getBoundingClientRect().bottom + window.scrollY - 8;
-        window.scrollTo({ top: Math.max(top - 60, 0), behavior: 'smooth' });
-      }
-    }
-
-    document.querySelectorAll('[data-next]').forEach(function(btn){
-      btn.addEventListener('click', function(){ goTo(current + 1); });
-    });
-    document.querySelectorAll('[data-prev]').forEach(function(btn){
-      btn.addEventListener('click', function(){ goTo(current - 1); });
-    });
-    nodes.forEach(function(n){
-      n.addEventListener('click', function(){ goTo(parseInt(n.getAttribute('data-goto'), 10)); });
-    });
-
-    document.addEventListener('keydown', function(e){
-      if(e.key === 'ArrowRight') goTo(current + 1);
-      if(e.key === 'ArrowLeft') goTo(current - 1);
-    });
-
-    render();
-  })();
-</script>
 
 </body>
 </html>
