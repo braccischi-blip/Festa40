@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>40 anni di Alessio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#120a24;
+    --navy-mid:#1c1038;
+    --gold:#e8c477;
+    --gold-bright:#f3d896;
+    --neon-pink:#ff3fc4;
+    --neon-cyan:#2be8ff;
+    --cream:#f5eee0;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    display:flex;align-items:center;justify-content:center;
+    padding:28px 16px;
+    background:var(--navy-deep);
+    font-family:'Cormorant Garamond', serif;
+    color:var(--cream);
+  }
+
+  .card{
+    position:relative;
+    width:100%;max-width:480px;
+    background:var(--navy-mid);
+    border:1px solid var(--gold);
+    box-shadow:
+      0 0 0 6px var(--navy-deep),
+      0 0 0 7px var(--gold),
+      0 0 40px rgba(255,63,196,.18),
+      0 0 70px rgba(43,232,255,.12),
+      0 20px 60px rgba(0,0,0,.5);
+    padding:56px 40px 48px;
+    text-align:center;
+    overflow:hidden;
+  }
+
+  /* motivo decorativo a losanghe, ispirato ai motivi geometrici andalusi/mediterranei, in chiave neon anni 90 */
+  .card::before{
+    content:"";
+    position:absolute;inset:0;
+    opacity:.09;
+    background-image:
+      linear-gradient(45deg, var(--neon-cyan) 1px, transparent 1px),
+      linear-gradient(-45deg, var(--neon-pink) 1px, transparent 1px);
+    background-size:34px 34px;
+    pointer-events:none;
+  }
+
+  .corner{
+    position:absolute;width:64px;height:64px;
+    border:1px solid var(--gold);
+    opacity:.7;
+    pointer-events:none;
+  }
+  .corner.tl{top:14px;left:14px;border-right:none;border-bottom:none;}
+  .corner.tr{top:14px;right:14px;border-left:none;border-bottom:none;}
+  .corner.bl{bottom:14px;left:14px;border-right:none;border-top:none;}
+  .corner.br{bottom:14px;right:14px;border-left:none;border-top:none;}
+
+  .content{position:relative;z-index:1;}
+
+  .eyebrow{
+    font-size:14px;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    color:var(--neon-cyan);
+    margin:0 0 6px;
+    font-weight:500;
+  }
+
+  .numeral{
+    font-size:clamp(96px, 24vw, 132px);
+    line-height:.9;
+    font-weight:300;
+    color:var(--cream);
+    margin:0;
+    letter-spacing:.02em;
+    text-shadow:
+      0 0 10px rgba(255,63,196,.55),
+      0 0 26px rgba(255,63,196,.35),
+      0 0 44px rgba(43,232,255,.25);
+  }
+
+  .name{
+    font-size:22px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--cream);
+    margin:6px 0 26px;
+    font-weight:500;
+  }
+
+  .rule{
+    width:120px;height:1px;margin:0 auto 30px;
+    background:linear-gradient(90deg, transparent, var(--neon-pink), var(--neon-cyan), transparent);
+  }
+
+  .details p{
+    margin:0 0 6px;
+    font-size:22px;
+    font-weight:400;
+    color:var(--cream);
+  }
+  .details .place{
+    font-size:19px;
+    color:var(--neon-cyan);
+    margin-bottom:28px;
+  }
+
+  .meta{
+    font-size:17px;
+    letter-spacing:.03em;
+    color:var(--cream);
+    opacity:.85;
+    margin:0 0 4px;
+  }
+  .meta.gold{color:var(--neon-pink);}
+
+  .signature{
+    display:inline-block;
+    margin-top:34px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:19px;
+    font-weight:600;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--cream);
+    text-decoration:none;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--neon-pink);
+    text-shadow:0 0 10px rgba(255,63,196,.5), 0 0 22px rgba(43,232,255,.3);
+    transition:text-shadow .25s ease, color .25s ease, border-color .25s ease, transform .15s ease;
+  }
+  .signature:hover{
+    color:var(--gold-bright);
+    border-color:var(--neon-cyan);
+    text-shadow:0 0 16px rgba(43,232,255,.6), 0 0 30px rgba(255,63,196,.4);
+    transform:translateY(-1px);
+  }
+  .signature-hint{
+    display:block;
+    margin-top:10px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:13px;
+    letter-spacing:.03em;
+    color:var(--cream);
+    opacity:.55;
+  }
+
+  @media (max-width:400px){
+    .card{padding:44px 24px 36px;}
+    .numeral{font-size:clamp(80px, 26vw, 104px);}
+    .details p{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner bl"></span>
+    <span class="corner br"></span>
+
+    <div class="content">
+      <p class="eyebrow">Festeggiamo i</p>
+      <p class="numeral">40</p>
+      <p class="name">anni di Alessio</p>
+
+      <div class="rule"></div>
+
+      <div class="details">
+        <p>4 Settembre, ore 20:00</p>
+        <p class="place">Hotel Tiber — Via della Torre Clementina 276, Fiumicino</p>
+      </div>
+
+      <p class="meta">RSVP entro il 23 Agosto</p>
+      <p class="meta gold">Dress code: eleganza anni '90, mood Beverly Hills 90210</p>
+
+      <a class="signature" href="https://forms.gle/qxchKVAdDaNRm6XE9" target="_blank" rel="noopener">Clicca qui per prenotare</a>
+      <span class="signature-hint">Al click verrai reindirizzato al modulo di prenotazione</span>
+    </div>
+  </div>
+
+</body>
+</html>
